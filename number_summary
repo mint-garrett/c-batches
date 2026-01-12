@@ -1,0 +1,35 @@
+#include <stdio.h> //include library
+
+int main(void) {
+
+	//introduce number int vars
+	int num1;
+	int num2;
+
+	//asking for numbers
+	printf("enter number 1:");
+	scanf_s("%d", &num1);
+
+	printf("enter number 2:");
+	scanf_s("%d", &num2);
+
+	//print numbers to make sure scanf_s and num vars are syncing
+	printf("number 1 is %d \n", num1);
+	printf("number 2 is %d \n", num2);
+
+
+	//create and define operator vars with num1 and num2
+	int add = num1 + num2;
+	int subtract = num1 - num2;
+	int multiply = num1 * num2;
+	int divide = num1 / num2;
+
+
+	//output operand vars
+	printf("%d + %d = %d \n", num1, num2, add);
+	printf("%d - %d = %d \n", num1, num2, subtract);
+	printf("%d * %d = %d \n", num1, num2, multiply);
+	printf("%d - %d = %d \n", num1, num2, divide);
+
+	return 0;
+}
