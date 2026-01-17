@@ -23,13 +23,14 @@ int main(void) {
 	int subtract = num1 - num2;
 	int multiply = num1 * num2;
 	int divide = num1 / num2;
+	int modulus = num1 % num2;
 
 
 	//output operand vars
 	printf("%d + %d = %d \n", num1, num2, add);
 	printf("%d - %d = %d \n", num1, num2, subtract);
 	printf("%d * %d = %d \n", num1, num2, multiply);
-	printf("%d - %d = %d \n", num1, num2, divide);
+	printf("%d - %d = %d with a remainder of %d \n", num1, num2, divide, modulus);
 
 	return 0;
 }
