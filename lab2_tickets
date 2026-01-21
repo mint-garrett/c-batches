@@ -1,0 +1,31 @@
+//lab2 conditionals for rollercoaster tickets
+
+#include <stdio.h>
+
+int main(void)
+{
+	printf("Welcome to the rollercoaster. \n");
+	unsigned char age; //creates smallest data type var possible for age
+	printf("How old are you? \n"); //ask user their age
+	scanf_s("%hhu", &age); //scan user input into age var
+	printf("You entered an age of %d \n", age);
+
+	///conditional print statements based on age
+	if (age <= 10){
+		printf("You are a kid. Your ticket price is $10. \n");
+	}
+
+	else if (age>10 && age<20){
+		printf("You are a teen.Your ticket price is $19. \n");
+	}
+
+	else if (age>=20 && age<65){
+		printf("You are an adult. Your ticket price is $30 \n");
+	}
+
+	else if (age>=65) {
+		printf("You are a senior. Your ticket price is $65. \n");
+	}
+
+	return 0;
+}
