@@ -1,0 +1,150 @@
+//all this does is print arrays, add arrays, find min/max values, and apply conditionals to arrays
+
+
+#include <stdio.h> 
+//lab3 task 1
+
+int max_val_fn(int arr[], int arr_len)
+{
+	int max_val = arr[0];
+	for (char i = 0; i < arr_len; i++)
+	{
+		if (max_val < arr[i])
+		{
+			max_val = arr[i];
+		}
+	}
+	return max_val;
+}
+
+int min_val_fn(int arr[], int arr_len)
+{
+	int min_val = arr[0];
+	for (char i = 0; i < arr_len; i++)
+	{
+		if (arr[i] < min_val)
+		{
+			min_val = arr[i];
+		}
+	}
+	return min_val;
+}
+
+int sum_arr_fn(int arr[], int arr_len)
+{
+	int sum = 0;
+	for (char i = 0; i < arr_len; i++)
+	{
+		sum = sum + arr[i];
+	}
+	return sum;
+}
+
+int count_arr_fn(int arr[], int arr_len, int threshold)
+{
+	int arr_count = 0;
+	for (char i = 0; i < arr_len; i++)
+	{
+		if (arr[i] < threshold)
+		{
+			arr_count = arr_count + 1;
+		}
+	}
+	return arr_count;
+}
+
+int main(void)
+{
+
+	//entering data into arrays
+	int group1[] = { 158, 192, 143, 136, 185, 120, 109 };
+	int group1_len = sizeof(group1) / sizeof(int);
+
+	int group2[] = { 155, 142, 131, 157, 147 };
+	int group2_len = sizeof(group2) / sizeof(int);
+
+	int group3[] = { 163, 188, 121, 172, 155, 144, 131 };
+	int group3_len = sizeof(group3) / sizeof(int);
+
+	int group4[] = { -15, -22, -1, -8, -9 };
+	int group4_len = sizeof(group4) / sizeof(int);
+
+
+	//running function on all arrays and printing their max values
+	int max_val1;
+	max_val1 = max_val_fn(group1, group1_len);
+	printf("the max value of array 1 is: %d\n", max_val1);
+
+	int max_val2;
+	max_val2 = max_val_fn(group2, group2_len);
+	printf("the max value of array 2 is %d\n", max_val2);
+
+	int max_val3;
+	max_val3 = max_val_fn(group3, group3_len);
+	printf("the max value of array 3 is %d\n", max_val3);
+
+	int max_val4;
+	max_val4 = max_val_fn(group4, group4_len);
+	printf("the max value of array 4 is %d\n", max_val4);
+
+	printf("\n\n");
+
+
+	///running min val fn on all arrays and printing min val
+	int min_val1;
+	min_val1 = min_val_fn(group1, group1_len);
+	printf("the minimum value of group1 is: %d\n", min_val1);
+
+	int min_val2;
+	min_val2 = min_val_fn(group2, group2_len);
+	printf("the minimum value of group2 is: %d\n", min_val1);
+
+	int min_val3;
+	min_val3 = min_val_fn(group3, group3_len);
+	printf("the minimum value of group3 is: %d\n", min_val1);
+
+	int min_val4;
+	min_val4 = min_val_fn(group4, group4_len);
+	printf("the minimum value of group4 is: %d\n", min_val1);
+
+	printf("\n\n");
+
+	//run sum fn and print arr sums
+	int sum1;
+	sum1 = sum_arr_fn(group1, group1_len);
+	printf("sum of group 1 is: %d\n", sum1);
+
+	int sum2;
+	sum2 = sum_arr_fn(group2, group2_len);
+	printf("sum of group 2 is: %d\n", sum2);
+
+	int sum3;
+	sum3 = sum_arr_fn(group3, group3_len);
+	printf("sum of group 3 is: %d\n", sum3);
+
+	int sum4;
+	sum4 = sum_arr_fn(group4, group4_len);
+	printf("sum of group 4 is: %d\n", sum4);
+
+	printf("\n\n");
+
+	// weight threshold fn
+	int count1;
+	count1 = count_arr_fn(group1, group1_len, 150);
+	printf("the number of people in group1 under 150 lbs is: %d\n", count1);
+
+	int count2;
+	count2 = count_arr_fn(group2, group2_len, 150);
+	printf("the number of people in group 2 under 150 lbs is: %d\n", count2);
+
+	int count3;
+	count3 = count_arr_fn(group3, group3_len, 160);
+	printf("the number of people in group3 under 160 lbs is: %d\n", count3);
+
+	int count4;
+	count4 = count_arr_fn(group4, group4_len, -10);
+	printf("the number of people in group 4 under -10 lbs is: %d\n", count4);
+
+
+	return 0;
+}
