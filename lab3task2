@@ -1,0 +1,59 @@
+///purpose is to create an array based test storing system with different funtions
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void print_array_fn(int arr[], int arr_len)
+{
+	//prints each element of array
+	for (char i = 0; i < arr_len; i++)
+	{
+		printf("You have selected the view test score option, The student's scores are:\n");
+		printf("%d", arr[i]);
+		printf("\n\n");
+	}
+}
+int array_sum_fn(int arr[], int arr_len)
+{
+	//sums all elements in arrray
+	printf("You have selected the total score function.");
+	int sum = 0;
+	for (char i = 0; i < arr_len; i++)
+	{
+		sum = sum + arr[i];
+	}
+	printf("\n\n");
+	return sum;
+}
+int array_avg_fn(float arr[], float arr_len)
+{
+	//finds the average value of an array w decimal
+	printf("You have selected the average score function");
+	float total = 0;
+	for (char i = 0; i < arr_len; i++)
+	{
+		total = total + arr[i];
+	}
+	float avg = total / arr_len;
+	return avg;
+}
+void update(int arr[], int arr_len)
+{
+	printf("You have selected the update score option. \n");
+	printf("What test score would you like to update ?\n ");
+	printf("please keep in mind the first test is entry 0 (due to C arrays)\n");
+	char test_number = 0;
+	scanf_s("%hhd", &test_number);
+	printf("What would you like to update the score to?");
+	char new_test_score = 0;
+	scanf_s("%hhd", &new_test_score);
+	arr[test_number] = new_test_score;
+}
+
+int main()
+{
+
+	return 0;
+}
