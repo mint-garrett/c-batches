@@ -54,6 +54,44 @@ void update(int arr[], int arr_len)
 
 int main()
 {
+//srand(time(0));
 
+	int test_arr[] = { 7,7,7,7,7,7,7,7,7,7 };
+	int test_arr_len = sizeof(test_arr) / sizeof(int);
+	
+	char options =0;
+	printf("welcome to the school test score program. please select an option:\n");
+	printf("1. print student record\n2. print total score\n3. print average score\n4. update student score\n5. Exit program\n");
+	scanf_s("%hhd", &options);
+	
+	while (options != 5)
+	{
+		int sum1 = 0; //variable for int return at case 2
+		float avg1 = 0; //variable for avg return at case3
+	
+		switch (options)
+		{
+		case 1:
+			print_array_fn(test_arr, test_arr_len);
+			break;
+		case 2:
+			sum1 = array_sum_fn(test_arr, test_arr_len);
+			printf("The student's test score sum is %d", sum1);
+			printf("\n");
+			break;
+		case 3:
+			avg1 = array_avg_fn(test_arr, test_arr_len);
+			printf("The student's average score is %f", avg1);
+			printf("\n");
+			break;
+		case 4:
+			update(test_arr, test_arr_len);
+			printf("\n");
+			break;
+		}
+		printf("welcome to the school test score program. please select an option:\n");
+		printf("1. print student record\n2. print total score\n3. print average score\n4. update student score\n 5. Exit program\n");
+		scanf_s("%hhd", &options);
+	}
 	return 0;
 }
