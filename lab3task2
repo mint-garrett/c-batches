@@ -1,97 +1,125 @@
-///purpose is to create an array based test storing system with different funtions
-
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 void print_array_fn(int arr[], int arr_len)
 {
 	//prints each element of array
+	printf("You have selected the view test score option, The student's scores are:\n");
 	for (char i = 0; i < arr_len; i++)
 	{
-		printf("You have selected the view test score option, The student's scores are:\n");
-		printf("%d", arr[i]);
-		printf("\n\n");
-	}
-}
-int array_sum_fn(int arr[], int arr_len)
-{
-	//sums all elements in arrray
-	printf("You have selected the total score function.");
-	int sum = 0;
-	for (char i = 0; i < arr_len; i++)
-	{
-		sum = sum + arr[i];
+		printf("%d ", arr[i]);
 	}
 	printf("\n\n");
-	return sum;
 }
-int array_avg_fn(float arr[], float arr_len)
+void enter_array_fn(int arr[], int arr_len[])
+{
+	printf("You have selected the score entering function. Enter 10 scores ranging from 0-10\n");
+	for (char i = 0; i < arr_len; i++)
+	{
+		int scanned_score = 0;
+		scanf_s("%d ", &scanned_score);
+		if (scanned_score > 10 || scanned_score < 0)
+		{
+			printf("Please enter a new score between 0-10\n");
+			scanf_s("%d", &scanned_score);
+		}
+		arr[i] = scanned_score;
+	}
+}
+int array_avg_fn(int arr[], int arr_len)
 {
 	//finds the average value of an array w decimal
-	printf("You have selected the average score function");
+	printf("You have selected the average score function\n");
 	float total = 0;
 	for (char i = 0; i < arr_len; i++)
 	{
-		total = total + arr[i];
+		total = total + (float)arr[i];
 	}
-	float avg = total / arr_len;
+	float avg = total / (float)arr_len;
 	return avg;
+	printf("\n\n");
 }
 void update(int arr[], int arr_len)
 {
 	printf("You have selected the update score option. \n");
 	printf("What test score would you like to update ?\n ");
-	printf("please keep in mind the first test is entry 0 (due to C arrays)\n");
+	printf("please keep in mind the first test is entry 0. Enter a quiz number from 0-9 (due to C arrays)\n");
 	char test_number = 0;
 	scanf_s("%hhd", &test_number);
-	printf("What would you like to update the score to?");
+	if (test_number > 10 || test_number < 0)
+	{
+		printf("enter a test number between 0-9 (C arrays)");
+		scanf_s("%hhd", &test_number);
+	}
+	printf("What would you like to update the score to? Score must be from 0-10\n");
 	char new_test_score = 0;
 	scanf_s("%hhd", &new_test_score);
+	if (new_test_score > 10 || test_number < 0)
+	{
+		printf("test score must be between 0-10. try again\n");
+		scanf_s("%hhd", &new_test_score);
+	}
 	arr[test_number] = new_test_score;
+	printf("\n\n");
 }
-
+void max_val_fn(int arr[], int arr_len[])
+{
+	printf("You have selected the max value function.");
+	int max_value = 0;
+	for (char i = 0; i < arr_len; i++)
+	{
+		max_value = arr[0];
+		if (arr[i] > max_value)
+		{
+			max_value = arr[i];
+		}
+	}
+	printf("the highest score this student recvied is %d", max_value);
+}
 int main()
 {
-//srand(time(0));
-
 	int test_arr[] = { 7,7,7,7,7,7,7,7,7,7 };
 	int test_arr_len = sizeof(test_arr) / sizeof(int);
-	
-	char options =0;
+
+	char options = 0;
 	printf("welcome to the school test score program. please select an option:\n");
-	printf("1. print student record\n2. print total score\n3. print average score\n4. update student score\n5. Exit program\n");
+	printf("1. enter student scores\n2.print student scores\n3.student's avg score\n4. update score\n5. student's max score\n6.Exit\n");
 	scanf_s("%hhd", &options);
-	
-	while (options != 5)
+
+	while (options != 6)
 	{
 		int sum1 = 0; //variable for int return at case 2
 		float avg1 = 0; //variable for avg return at case3
-	
+
 		switch (options)
 		{
-		case 1:
-			print_array_fn(test_arr, test_arr_len);
-			break;
-		case 2:
-			sum1 = array_sum_fn(test_arr, test_arr_len);
-			printf("The student's test score sum is %d", sum1);
+		case 1: //enter test scores
+			enter_array_fn(test_arr, test_arr_len);
 			printf("\n");
 			break;
-		case 3:
+		case 2: // print scores
+			print_array_fn(test_arr, test_arr_len);
+			break;
+		case 3: //find avg score
 			avg1 = array_avg_fn(test_arr, test_arr_len);
 			printf("The student's average score is %f", avg1);
 			printf("\n");
 			break;
-		case 4:
+		case 4: //update score
 			update(test_arr, test_arr_len);
 			printf("\n");
 			break;
+		case 5: //find highest score
+			max_val_fn(test_arr, test_arr_len);
+			printf("\n");
+			break;
+		default:
+			printf("the number you entered does not correspond to an option. try again");
+			break;
 		}
 		printf("welcome to the school test score program. please select an option:\n");
-		printf("1. print student record\n2. print total score\n3. print average score\n4. update student score\n 5. Exit program\n");
-		scanf_s("%hhd", &options);
-	}
+		printf("1. enter student scores\n2. print student scores\n3. student's avg score\n4. update score\n5. student's max score\n6. Exit\n");
+		scanf_s("%hhd", &options); 
+	}//while end
+
 	return 0;
-}
+}//main end
