@@ -16,7 +16,7 @@ void enter_array_fn(int arr[], int arr_len[])
 	for (char i = 0; i < arr_len; i++)
 	{
 		int scanned_score = 0;
-		scanf_s("%d ", &scanned_score);
+		scanf_s("%d", &scanned_score);
 		if (scanned_score > 10 || scanned_score < 0)
 		{
 			printf("Please enter a new score between 0-10\n");
@@ -25,7 +25,7 @@ void enter_array_fn(int arr[], int arr_len[])
 		arr[i] = scanned_score;
 	}
 }
-int array_avg_fn(int arr[], int arr_len)
+float array_avg_fn(int arr[], int arr_len)
 {
 	//finds the average value of an array w decimal
 	printf("You have selected the average score function\n");
@@ -35,8 +35,8 @@ int array_avg_fn(int arr[], int arr_len)
 		total = total + (float)arr[i];
 	}
 	float avg = total / (float)arr_len;
-	return avg;
 	printf("\n\n");
+	return avg;
 }
 void update(int arr[], int arr_len)
 {
@@ -64,10 +64,9 @@ void update(int arr[], int arr_len)
 void max_val_fn(int arr[], int arr_len[])
 {
 	printf("You have selected the max value function.");
-	int max_value = 0;
+	int max_value = arr[0];
 	for (char i = 0; i < arr_len; i++)
 	{
-		max_value = arr[0];
 		if (arr[i] > max_value)
 		{
 			max_value = arr[i];
@@ -77,16 +76,17 @@ void max_val_fn(int arr[], int arr_len[])
 }
 int main()
 {
-	int test_arr[] = { 7,7,7,7,7,7,7,7,7,7 };
+	int test_arr[] = { 7, 8, 9, 10, 6, 5, 4, 3, 2, 1 };
 	int test_arr_len = sizeof(test_arr) / sizeof(int);
 
 	char options = 0;
-	printf("welcome to the school test score program. please select an option:\n");
-	printf("1. enter student scores\n2.print student scores\n3.student's avg score\n4. update score\n5. student's max score\n6.Exit\n");
-	scanf_s("%hhd", &options);
+	
 
 	while (options != 6)
 	{
+		printf("welcome to the school test score program. please select an option:\n");
+		printf("1. enter student scores\n2.print student scores\n3.student's avg score\n4. update score\n5. student's max score\n6.Exit\n");
+		scanf_s("%hhd", &options);
 		int sum1 = 0; //variable for int return at case 2
 		float avg1 = 0; //variable for avg return at case3
 
@@ -101,7 +101,7 @@ int main()
 			break;
 		case 3: //find avg score
 			avg1 = array_avg_fn(test_arr, test_arr_len);
-			printf("The student's average score is %f", avg1);
+			printf("The student's average score is %.2f", avg1);
 			printf("\n");
 			break;
 		case 4: //update score
@@ -113,12 +113,9 @@ int main()
 			printf("\n");
 			break;
 		default:
-			printf("the number you entered does not correspond to an option. try again");
+			printf("the number you entered does not correspond to an option. try again\n");
 			break;
 		}
-		printf("welcome to the school test score program. please select an option:\n");
-		printf("1. enter student scores\n2. print student scores\n3. student's avg score\n4. update score\n5. student's max score\n6. Exit\n");
-		scanf_s("%hhd", &options); 
 	}//while end
 
 	return 0;
